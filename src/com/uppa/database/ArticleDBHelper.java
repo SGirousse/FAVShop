@@ -33,6 +33,7 @@ public class ArticleDBHelper extends SQLiteOpenHelper{
 	public static final String COL_ARTICLE_STORE = "store";
 	public static final String COL_ARTICLE_INITPRICE = "initprice";
 	public static final String COL_ARTICLE_SAILPRICE = "sailprice";
+	public static final String COL_ARTICLE_ENDOFSAIL = "endofsail";
 	public static final String COL_ARTICLE_FLASHDATE = "flashdate";
 	//Store table
 	
@@ -49,6 +50,7 @@ public class ArticleDBHelper extends SQLiteOpenHelper{
 		    + COL_ARTICLE_STORE + " text not null, "
 		    + COL_ARTICLE_INITPRICE + " real not null, "
 		    + COL_ARTICLE_SAILPRICE + " real, "
+		    + COL_ARTICLE_ENDOFSAIL + " text, "
 		    + COL_ARTICLE_FLASHDATE + " text not null "
 		    +")";
 
