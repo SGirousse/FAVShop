@@ -1,10 +1,13 @@
 package com.uppa.database;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.uppa.pojo.Article;
 
@@ -33,6 +36,20 @@ public class ArticleDAO {
 	}
 	
 	public List<Article> getAllArticles(){
-		return null;
+		List<Article> a_list = new ArrayList<Article>();
+		
+		return a_list;
+	}
+	
+	public int deleteAllArticles(){
+		Log.w("TRACE_DB", "ArticleDAO *** public int deleteAllArticles()");
+		
+		return _articles_db.delete(_articles_db_helper.TABLE_CUSTOMER_ARTICLE, null, null);
+	}
+	
+	public Article cursorToArticle(Cursor c){
+		Article a = new Article();
+		
+		return a;
 	}
 }
