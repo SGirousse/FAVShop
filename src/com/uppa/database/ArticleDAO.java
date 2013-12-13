@@ -1,8 +1,12 @@
-package database;
+package com.uppa.database;
 
+
+import java.util.List;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.uppa.pojo.Article;
 
 public class ArticleDAO {
 	private SQLiteDatabase _articles_db;
@@ -22,5 +26,13 @@ public class ArticleDAO {
 	
 	public void close(){
 		_articles_db.close();
+	}
+	
+	public long insertArticle(Article a){
+		return 1;
+	}
+	
+	public List<Article> getAllArticles(){
+		return null;
 	}
 }

@@ -1,4 +1,4 @@
-package database;
+package com.uppa.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -66,7 +66,7 @@ public class ArticleDBHelper extends SQLiteOpenHelper{
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	    Log.w( ArticleDBHelper.class.getName(),
-	            "Upgrading database from version " + oldVersion + " to "
+	            "Upgrading com.uppa.database from version " + oldVersion + " to "
 	                + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CUSTOMER_ARTICLE);
         onCreate(db);
