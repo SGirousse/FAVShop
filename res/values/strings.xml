@@ -1,8 +1,10 @@
 <resources>
 
     <string name="app_name">FAV\'Shop</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
+    
+    <!-- activity_main.xml  -->
+    <string name="imageButtonFAVIt_description">Just Fav It</string>
 
 </resources>
