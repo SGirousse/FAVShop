@@ -25,6 +25,17 @@
             android:name=".NewFAVActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        
+        <activity
+            android:name=".FAVViewActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        
+        <activity
+            android:name=".ShowFAVActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        
     </application>
 
 </manifest>
