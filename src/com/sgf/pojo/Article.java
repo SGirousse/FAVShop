@@ -25,6 +25,16 @@ public class Article {
 	}
 	
 	public Article(String barcode, String title, String description, String url, 
+			String store, float initprice){
+		_barcode=barcode;
+		_title=title;
+		_description=description;
+		_url=url;
+		_store=store;
+		_initprice=initprice;
+	}
+	
+	public Article(String barcode, String title, String description, String url, 
 			String store, float initprice, float sailprice, Date endofsail,
 			Date flashdate){
 		_barcode=barcode;

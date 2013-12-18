@@ -6,5 +6,16 @@
     
     <!-- activity_main.xml  -->
     <string name="imageButtonFAVIt_description">Just Fav It</string>
-
+    
+    <!-- activity_newfav.xml -->
+    <string name="newfav_bardcode_text">Code barre :</string>
+    <string name="newfav_bardcode_content">no_barcode</string>
+    <string name="newfav_article_text">Article :</string>
+    <string name="newfav_article_content">no_article</string>
+    <string name="newfav_price_text">Prix :</string>
+    <string name="newfav_price_content">no_price</string>
+    <string name="newfav_takepic_button">Ajouter une photo</string>
+    <string name="newfav_pic_imageview">Photo correspondant à l\'article</string>
+    <string name="newfav_save_button">Enregistrer</string>
+    
 </resources>

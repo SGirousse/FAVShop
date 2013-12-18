@@ -1,0 +1,126 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main" >
+
+    <LinearLayout
+        android:id="@+id/layoutArticle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewNewFavArticle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:text="@string/newfav_article_text" />
+
+        <EditText
+            android:id="@+id/editTextNewFavArticleContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text="@string/newfav_article_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutArticle" >
+
+        <TextView
+            android:id="@+id/textViewNewFavPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:text="@string/newfav_price_text" />
+
+        <TextView
+            android:id="@+id/textViewNewFavPriceContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/newfav_price_content" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layoutDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutPrice" >
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine" >
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layoutBarcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutDescription" >
+
+        <TextView
+            android:id="@+id/textViewNewFavBarcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/newfav_bardcode_text" />
+
+        <TextView
+            android:id="@+id/textViewNewFavBarcodeContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/newfav_bardcode_content" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layoutPic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:layout_below="@+id/layoutBarcode" >
+
+        <ImageView
+            android:id="@+id/imageViewPic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:src="@android:drawable/ic_popup_disk_full"
+            android:contentDescription="@string/newfav_pic_imageview" />
+
+        <Button
+            android:id="@+id/buttonTakePic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/newfav_takepic_button" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layoutSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutPic" >
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/newfav_save_button" />
+
+    </LinearLayout>
+    
+</RelativeLayout>

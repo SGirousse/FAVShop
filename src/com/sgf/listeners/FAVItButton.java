@@ -1,7 +1,9 @@
 package com.sgf.listeners;
 
 import com.sgf.favshop.MainActivity;
+import com.sgf.favshop.NewFAVActivity;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -21,7 +23,10 @@ public class FAVItButton implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
+		Intent i = new Intent(_main_activity.getBaseContext(), NewFAVActivity.class);
+		
+		_main_activity.startActivity(i);
 	}
 
 }
