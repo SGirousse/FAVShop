@@ -173,9 +173,7 @@ public class Article {
 		
 		//If default or < current date then maybe true
 		if(_endofsail==new Date(2000,12,31) || _endofsail.after(new Date())){
-			Log.i("TRACE_POJO", "date ok");
 			if(_initprice>_sailprice){
-				Log.i("TRACE_POJO", "prix ok");
 				onSail=true;
 			}
 		}

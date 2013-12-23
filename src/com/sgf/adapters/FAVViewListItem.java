@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Locale;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sgf.favshop.R;
@@ -72,10 +75,18 @@ public class FAVViewListItem extends ArrayAdapter<Article>{
 				text_view_onsail.setText("En promotion !");
 			}
 			
+			text_view_onsail.setTextColor(Color.GREEN);
+			text_view_sailprice.setTextColor(Color.GREEN);
+			text_view_onsail.setTypeface(null, Typeface.BOLD);
+			text_view_sailprice.setTypeface(null, Typeface.BOLD);
+			
 			//strike the older price
 			Spannable spannable = (Spannable) text_view_price.getText();
 			spannable.setSpan(STRIKE_THROUGH_SPAN, 0, sInit_price.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		}
+		
+		TextView text_view_store = (TextView) convertView.findViewById(R.id.textViewFavViewStore);		
+		text_view_store.setText(a.getStore()+" - ");
 		
 		TextView text_view_description = (TextView) convertView.findViewById(R.id.textViewFavViewDescription);		
 		text_view_description.setText(a.getDescription());
