@@ -16,27 +16,49 @@ public class Article {
 	private Date _flashdate;
 	
 	public Article(){
+		_id=-1;
+		_barcode="";
+		_title="";
+		_description="";
+		_url="";
+		_store="";
+		_initprice=0.0f;
+		_sailprice=0.0f;
+		_endofsail=new Date(2000,12,31);
+		_flashdate=new Date(2000,12,31);
 	}
 	
 	public Article(String barcode, String store, float initprice){
+		_id=-1;
 		_barcode=barcode;
+		_title="";
+		_description="";
+		_url="";
 		_store=store;
 		_initprice=initprice;
+		_sailprice=initprice;
+		_endofsail=new Date(2000,12,31);
+		_flashdate=new Date(2000,12,31);	
 	}
 	
 	public Article(String barcode, String title, String description, String url, 
 			String store, float initprice){
+		_id=-1;
 		_barcode=barcode;
 		_title=title;
 		_description=description;
 		_url=url;
 		_store=store;
 		_initprice=initprice;
+		_sailprice=initprice;
+		_endofsail=new Date(2000,12,31);
+		_flashdate=new Date(2000,12,31);	
 	}
 	
 	public Article(String barcode, String title, String description, String url, 
 			String store, float initprice, float sailprice, Date endofsail,
 			Date flashdate){
+		_id=-1;
 		_barcode=barcode;
 		_title=title;
 		_description=description;
@@ -45,7 +67,7 @@ public class Article {
 		_initprice=initprice;
 		_sailprice=sailprice;
 		_endofsail=endofsail;
-		_flashdate=flashdate;		
+		_flashdate=flashdate;	
 	}
 	
 	public Article(int id, String barcode, String title, String description,
