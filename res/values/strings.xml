@@ -21,5 +21,10 @@
     
     <!-- activity_favview.xml -->
 	<string name="title_activity_favview">FAV\'$hop - Liste de vos favoris</string>
+	
+	<!-- activity_showfav.xml -->
+	<string name="title_activity_showfav">FAV\'$hop - Détail de l\'article</string>
+	
+	
     
 </resources>

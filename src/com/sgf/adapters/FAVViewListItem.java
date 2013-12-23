@@ -42,10 +42,10 @@ public class FAVViewListItem extends ArrayAdapter<Article>{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Log.i("TRACE", "FAVViewListItem *** public View getView(int position, View convertView, ViewGroup parent)");
 
-		if (convertView==null) {
+		//if (convertView==null) { #FIX BUG OF STYLE ITEMS DUPLICATIONS
 			LayoutInflater layoutInflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = layoutInflater.inflate(_layout_id, parent, false);   
-		} 
+		//}
 		
 		//Article to show
 		Article a = _a_list.get(position);
@@ -66,6 +66,9 @@ public class FAVViewListItem extends ArrayAdapter<Article>{
 		
 		//If the article is on sail
 		if(a.onSail()){
+
+			convertView.setBackgroundColor(Color.parseColor("#dceddc"));
+			
 			//put sail info
 			text_view_sailprice.setText(String.valueOf(a.getSailprice())+"€");
 			if(a.getEndofsail()!=new Date(2000,12,31)){
@@ -75,8 +78,8 @@ public class FAVViewListItem extends ArrayAdapter<Article>{
 				text_view_onsail.setText("En promotion !");
 			}
 			
-			text_view_onsail.setTextColor(Color.GREEN);
-			text_view_sailprice.setTextColor(Color.GREEN);
+			text_view_onsail.setTextColor(Color.parseColor("#088A08"));
+			text_view_sailprice.setTextColor(Color.parseColor("#088A08"));
 			text_view_onsail.setTypeface(null, Typeface.BOLD);
 			text_view_sailprice.setTypeface(null, Typeface.BOLD);
 			
@@ -90,6 +93,7 @@ public class FAVViewListItem extends ArrayAdapter<Article>{
 		
 		TextView text_view_description = (TextView) convertView.findViewById(R.id.textViewFavViewDescription);		
 		text_view_description.setText(a.getDescription());
+		text_view_description.setTypeface(null, Typeface.ITALIC);
 
 		return convertView;
 	}

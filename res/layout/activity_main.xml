@@ -2,50 +2,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_main" >
+    android:background="@drawable/bg_main_light" >
 
-    <ImageButton
-        android:id="@+id/imageButtonFAVIt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@drawable/ic_favit"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/imageButtonFAVIt_description" />
-
-    <LinearLayout 
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:orientation="horizontal"
-    	android:layout_alignParentBottom="true"
-    	android:weightSum="3"
-    	android:background="@android:color/black" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="5" >
+
+        <ImageButton
+            android:id="@+id/imageButtonFAVIt"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="3"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/imageButtonFAVIt_description"
+            android:src="@drawable/ic_favit" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1px"
+            android:layout_weight="1"
+            android:background="#FFFFFF" />
         
-	   	<ImageButton
-	        android:id="@+id/imageButtonFAVView"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-        	android:background="@android:color/transparent"
-	        android:src="@android:drawable/ic_menu_agenda" />
-	
-	    <ImageButton
-	        android:id="@+id/imageButtonSettup"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"	        
-        	android:background="@android:color/transparent"
-	        android:src="@android:drawable/ic_menu_manage" />
-	
-	    <ImageButton
-	        android:id="@+id/imageButton1"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-        	android:background="@android:color/transparent"
-	        android:src="@android:drawable/ic_menu_info_details" />
-        
+       <ListView
+           android:id="@+id/listViewNotifications"
+           android:layout_width="wrap_content"
+           android:layout_height="0dp"
+           android:layout_weight="1" >
+       </ListView>
+    
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/black"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <ImageButton
+            android:id="@+id/imageButtonFAVView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_menu_agenda" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSettup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_menu_manage" />
+
+        <ImageButton
+            android:id="@+id/imageButtonInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_menu_info_details" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main" >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="A propos de FAV\&apos;$hop"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1px"
+        android:layout_above="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:background="#FFFFFF" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1px"
+        android:layout_above="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:background="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView2"
+        android:text="Copyright (c) 2013-2014 Siméon GIROUSSE, Fabien DELIANCOURT et Jean-Romain GRANGE" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:text="L\&apos;application FAV\&apos;$hop est une application permettant d\&apos;acheter vos produits favoris au prix le plus bas ! Pour cela il suffit de les flasher et vous serez automatiquement prévenus lorsqu&apos;ils seront en promotions. Dans les commerces participants uniquement. "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>

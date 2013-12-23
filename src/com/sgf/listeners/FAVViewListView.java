@@ -22,16 +22,14 @@ public class FAVViewListView implements OnItemClickListener{
 		_a_list=a_list;
 	}
 
-	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		Log.i("TRACE", "FAVViewListView *** public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3)");
 
-		//Get the article into list
-		Article a = _a_list.get(arg2);
+		int id = _a_list.get(arg2).getId();
 		
 		//Ask for the profile activity
 		Intent i = new Intent(_FAVView_activity.getBaseContext(), ShowFAVActivity.class );
-		//i.putExtra("article_toshow", a);
+		i.putExtra("article_toshow", id);
 		
 		_FAVView_activity.startActivity(i);
 	}

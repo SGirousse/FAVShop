@@ -168,7 +168,6 @@ public class Article {
 	}
 	
 	public boolean onSail(){
-		Log.i("TRACE_POJO", "Article *** public boolean onSail()");
 		boolean onSail = false;
 		
 		//If default or < current date then maybe true

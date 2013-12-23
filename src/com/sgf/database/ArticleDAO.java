@@ -118,6 +118,21 @@ public class ArticleDAO {
 		return a_list;
 	}
 	
+	public Article getArticleById(int id){
+		Article a = null;
+		
+		//select * from table_articles
+		Cursor cursor = _articles_db.query(_articles_db_helper.TABLE_CUSTOMER_ARTICLE,
+		        null, _articles_db_helper.COL_ARTICLE_ID + "=?", new String[]{String.valueOf(id)}, null, null, null);
+		
+		if(cursor.moveToFirst()){
+			a = cursorToArticle(cursor);
+		}
+		
+		return a;
+		
+	}
+	
 	/**
 	 * Destroy the whole <code>table_article</code> table
 	 * 
