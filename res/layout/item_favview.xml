@@ -1,29 +1,80 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:weightSum="10" >
+    	
+        <LinearLayout
+		    android:layout_width="0dp"
+		   	android:layout_height="match_parent"
+		   	android:orientation="vertical"
+		   	android:layout_weight="8" >
+		   	
+		   	<TextView
+		        android:id="@+id/textViewFavViewTitle"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="Large Text"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+		   	
+		    <TextView
+		        android:id="@+id/textViewFavViewBarcode"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content" />   	
+        </LinearLayout>
+
+	    
+        <ImageButton
+            android:id="@+id/imageButtonFavViewEdit"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_edit" />
+            
+        <ImageButton
+	        android:id="@+id/imageButtonFavViewDelete"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:src="@android:drawable/ic_delete" />
+        
+    </LinearLayout>
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:weightSum="100" >
+    	
+        <TextView
+	        android:id="@+id/textViewFavViewInitPrice"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="15" />
+        
+        <TextView
+	        android:id="@+id/textViewFavViewSailPrice"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="15" />
+        
+       <TextView
+	        android:id="@+id/textViewFavViewOnSail"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="70" />
+	        
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textViewFavViewTitle"
+        android:id="@+id/textViewFavViewDescription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/imageViewFavViewPic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ic_favit" />
-
-    <TextView
-        android:id="@+id/textViewFavViewPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textViewFavViewTitle"
-        android:text="TextView" />
-
-</RelativeLayout>
+</LinearLayout>

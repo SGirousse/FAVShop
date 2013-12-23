@@ -8,7 +8,7 @@
     <string name="imageButtonFAVIt_description">Just Fav It</string>
     
     <!-- activity_newfav.xml -->
-    <string name="title_activity_newfav">FAV\'$hop - Ajout d\'un nouvel article</string>
+    <string name="title_activity_newfav">FAV\'$hop - Ajout d\'un nouveau favori</string>
     <string name="newfav_header">Nouvel article</string>
     <string name="newfav_bardcode_hint">Saisissez un code barre</string>
     <string name="newfav_article_hint">Nommez votre article</string>
@@ -18,5 +18,8 @@
     <string name="newfav_takepic_button">Ajouter une photo</string>
     <string name="newfav_pic_imageview">Photo correspondant à l\'article</string>
     <string name="newfav_save_button">Enregistrer</string>
+    
+    <!-- activity_favview.xml -->
+	<string name="title_activity_favview">FAV\'$hop - Liste de vos favoris</string>
     
 </resources>

@@ -3,6 +3,7 @@ package com.sgf.listeners;
 import java.util.List;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -16,12 +17,15 @@ public class FAVViewListView implements OnItemClickListener{
 	private FAVViewActivity _FAVView_activity;
 	private List<Article> _a_list;
 	
-	public FAVViewListView(FAVViewActivity FAVView_activity){
+	public FAVViewListView(FAVViewActivity FAVView_activity, List<Article> a_list){
 		_FAVView_activity=FAVView_activity;
+		_a_list=a_list;
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		Log.i("TRACE", "FAVViewListView *** public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3)");
+
 		//Get the article into list
 		Article a = _a_list.get(arg2);
 		

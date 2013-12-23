@@ -6,6 +6,7 @@ import com.sgf.listeners.FAVViewButton;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.Window;
 import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
@@ -27,7 +28,6 @@ public class MainActivity extends Activity {
         _FAVview_button = new FAVViewButton(this);
         ImageButton favview_imagebutton = (ImageButton) findViewById(R.id.imageButtonFAVView);
         favview_imagebutton.setOnClickListener(_FAVview_button);
-        
         
     }
 

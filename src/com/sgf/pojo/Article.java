@@ -2,6 +2,8 @@ package com.sgf.pojo;
 
 import java.util.Date;
 
+import android.util.Log;
+
 public class Article {
 	
 	private int _id;			//should be auto-incremented from db insert
@@ -163,5 +165,21 @@ public class Article {
 	
 	public Date getFlashdate(){
 		return _flashdate;
+	}
+	
+	public boolean onSail(){
+		Log.i("TRACE_POJO", "Article *** public boolean onSail()");
+		boolean onSail = false;
+		
+		//If default or < current date then maybe true
+		if(_endofsail==new Date(2000,12,31) || _endofsail.after(new Date())){
+			Log.i("TRACE_POJO", "date ok");
+			if(_initprice>_sailprice){
+				Log.i("TRACE_POJO", "prix ok");
+				onSail=true;
+			}
+		}
+		
+		return onSail;
 	}
 }

@@ -97,11 +97,12 @@ public class ArticleDAO {
 	 * @see Article
 	 */
 	public List<Article> getAllArticles(){
+		Log.i("TRACE_DB", "ArticleDAO *** public List<Article> getAllArticles()");
 		List<Article> a_list = new ArrayList<Article>();
 		
 		//select * from table_articles
 		Cursor cursor = _articles_db.query(_articles_db_helper.TABLE_CUSTOMER_ARTICLE,
-		        _articles_db_helper.getAllArticlesColumns(), null, null, null, null, null);
+		        null, null, null, null, null, null);
 		
 		
 		//read through the list
