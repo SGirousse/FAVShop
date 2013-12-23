@@ -13,4 +13,39 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/imageButtonFAVIt_description" />
 
+    <LinearLayout 
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:layout_alignParentBottom="true"
+    	android:weightSum="3"
+    	android:background="@android:color/black" >
+        
+	   	<ImageButton
+	        android:id="@+id/imageButtonFAVView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+        	android:background="@android:color/transparent"
+	        android:src="@android:drawable/ic_menu_agenda" />
+	
+	    <ImageButton
+	        android:id="@+id/imageButtonSettup"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"	        
+        	android:background="@android:color/transparent"
+	        android:src="@android:drawable/ic_menu_manage" />
+	
+	    <ImageButton
+	        android:id="@+id/imageButton1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+        	android:background="@android:color/transparent"
+	        android:src="@android:drawable/ic_menu_info_details" />
+        
+    </LinearLayout>
+
+
 </RelativeLayout>

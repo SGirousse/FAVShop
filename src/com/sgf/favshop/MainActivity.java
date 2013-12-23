@@ -1,6 +1,7 @@
 package com.sgf.favshop;
 
 import com.sgf.listeners.FAVItButton;
+import com.sgf.listeners.FAVViewButton;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -10,6 +11,7 @@ import android.widget.ImageButton;
 public class MainActivity extends Activity {
 	
 	private FAVItButton _FAVIt_button;
+	private FAVViewButton _FAVview_button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,11 @@ public class MainActivity extends Activity {
         _FAVIt_button = new FAVItButton(this);
         ImageButton favit_imagebutton = (ImageButton) findViewById(R.id.imageButtonFAVIt);
         favit_imagebutton.setOnClickListener(_FAVIt_button);
+        //Show all FAVs
+        _FAVview_button = new FAVViewButton(this);
+        ImageButton favview_imagebutton = (ImageButton) findViewById(R.id.imageButtonFAVView);
+        favview_imagebutton.setOnClickListener(_FAVview_button);
+        
         
     }
 

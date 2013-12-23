@@ -4,33 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_main" >
-
-    <LinearLayout
-        android:id="@+id/layoutArticle"
+    
+        <LinearLayout
+        android:id="@+id/layoutBarcode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/textViewNewFavArticle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="5dp"
-            android:text="@string/newfav_article_text" />
-
         <EditText
-            android:id="@+id/editTextNewFavArticleContent"
+            android:id="@+id/editTextNewFavBarcodeContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:text="@string/newfav_article_content" />
+            android:ems="10"
+            android:inputType="number"
+            android:hint="@string/newfav_bardcode_hint" />
 
     </LinearLayout>
-
-    <LinearLayout
+    
+  	<LinearLayout
         android:id="@+id/layoutPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutArticle" >
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/layoutBarcode" >
 
         <TextView
             android:id="@+id/textViewNewFavPrice"
@@ -44,44 +39,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/newfav_price_content" />
-
     </LinearLayout>
     
     <LinearLayout
-        android:id="@+id/layoutDescription"
+        android:id="@+id/layoutArticle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutPrice" >
+        android:layout_below="@+id/layoutPic" >
 
         <EditText
-            android:id="@+id/editTextDescription"
+            android:id="@+id/editTextNewFavArticleContent"
+            android:hint="@string/newfav_article_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" >
-
-            <requestFocus />
-        </EditText>
-
-    </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/layoutBarcode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutDescription" >
-
-        <TextView
-            android:id="@+id/textViewNewFavBarcode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/newfav_bardcode_text" />
-
-        <TextView
-            android:id="@+id/textViewNewFavBarcodeContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/newfav_bardcode_content" />
+            android:inputType="text" />
 
     </LinearLayout>
     
@@ -90,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="4"
-        android:layout_below="@+id/layoutBarcode" >
+        android:layout_below="@+id/layoutPrice" >
 
         <ImageView
             android:id="@+id/imageViewPic"
@@ -100,12 +71,30 @@
             android:src="@android:drawable/ic_popup_disk_full"
             android:contentDescription="@string/newfav_pic_imageview" />
 
-        <Button
-            android:id="@+id/buttonTakePic"
+        <ImageButton
+            android:id="@+id/imageButtonTakePic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/newfav_takepic_button" />
+            android:text="@string/newfav_takepic_button"
+            android:contentDescription="@string/newfav_takepic_button"
+            android:src="@android:drawable/ic_menu_camera" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layoutDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutArticle" >
+
+        <EditText
+            android:id="@+id/editTextNewFavDescription"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:hint="@string/newfav_description_hint" />
 
     </LinearLayout>
     
@@ -113,7 +102,7 @@
         android:id="@+id/layoutSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutPic" >
+        android:layout_below="@+id/layoutDescription" >
 
         <Button
             android:id="@+id/buttonSave"
@@ -122,5 +111,5 @@
             android:text="@string/newfav_save_button" />
 
     </LinearLayout>
-    
+
 </RelativeLayout>
