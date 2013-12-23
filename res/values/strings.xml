@@ -24,6 +24,7 @@
 	
 	<!-- activity_showfav.xml -->
 	<string name="title_activity_showfav">FAV\'$hop - Détail de l\'article</string>
+	<string name="scan">Scan</string>
 	
 	
     
