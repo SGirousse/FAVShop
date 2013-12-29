@@ -22,7 +22,6 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	
 	private SaveNewFAVButton _saveNewFAV_button;
 	private static final int ZBAR_SCANNER_REQUEST = 0;
-	private static final int ZBAR_QR_SCANNER_REQUEST = 1;
 	private ImageView imageView;
 	private final static int CAMERA_REQUEST = 24;
 	private final static int SELECT_PHOTO = 42;
@@ -67,15 +66,10 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	{    
 	    if (resultCode == RESULT_FIRST_USER) 
 	    {
-	        // Scan result is available by making a call to data.getStringExtra(ZBarConstants.SCAN_RESULT)
-	        // Type of the scan result is available by making a call to data.getStringExtra(ZBarConstants.SCAN_RESULT_TYPE)
-	        //Toast.makeText(this, "Scan Result = " + data.getStringExtra(ZBarConstants.SCAN_RESULT), Toast.LENGTH_SHORT).show();
-	        //Toast.makeText(this, "Scan Result Type = " + data.getStringExtra(ZBarConstants.SCAN_RESULT_TYPE), Toast.LENGTH_SHORT).show();
 	        EditText barcode_box = (EditText) findViewById(R.id.editTextNewFavBarcodeContent);
 	        barcode_box.setText(data.getStringExtra(ZBarConstants.SCAN_RESULT));
-	        // The value of type indicates one of the symbols listed in Advanced Options below.
 	    } else if(resultCode == RESULT_CANCELED) {
-	        Toast.makeText(this, "Camera unavailable", Toast.LENGTH_SHORT).show();
+	        Toast.makeText(this, "Exit cam", Toast.LENGTH_SHORT).show();
 	    }
 	    
 	    if(resultCode == RESULT_OK){

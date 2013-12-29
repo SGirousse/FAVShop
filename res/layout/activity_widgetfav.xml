@@ -1,0 +1,14 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:gravity="center"
+  android:orientation="vertical"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content" >
+  <Button
+    android:id="@+id/boutonWidget"
+    android:layout_width="72dp"
+    android:layout_height="72dp"
+    android:text="Fav It"
+    android:background="@drawable/appwidget_dark_bg"
+    android:gravity="center" />
+</LinearLayout>
