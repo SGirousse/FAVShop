@@ -1,15 +1,16 @@
-package activity;
+package ExemplePhoto.activity;
 
-import tool.ImageUtility;
-import listener.AddPhotoPressListener;
-import listener.SearchPhotoPressListener;
-import com.example.printcameraforresult.R;
-import android.os.Bundle;
+import ExemplePhoto.listener.AddPhotoPressListener;
+import ExemplePhoto.listener.SearchPhotoPressListener;
+import ExemplePhoto.tool.ImageUtility;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.sgf.favshop.R;
 
 public class ExemplePhotoActivity extends Activity {
 
@@ -24,19 +25,19 @@ public class ExemplePhotoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		buttonAdd = (Button) findViewById(R.id.buttonAdd);
+		buttonAdd = (Button) findViewById(R.id.imageButtonTakePic);
 		buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST));
 		
-		buttonSearch = (Button) findViewById(R.id.buttonSearch);
-		buttonSearch.setOnClickListener(new SearchPhotoPressListener(this,SELECT_PHOTO));
+//		buttonSearch = (Button) findViewById(R.id.buttonSearch);
+//		buttonSearch.setOnClickListener(new SearchPhotoPressListener(this,SELECT_PHOTO));
 		
-		imageView = (ImageView)this.findViewById(R.id.imageView);
+		imageView = (ImageView)this.findViewById(R.id.imageViewPic);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);	
+		getMenuInflater().inflate(R.menu.activity_main, menu);	
 		return true;
 	}
 	

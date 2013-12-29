@@ -1,5 +1,7 @@
 package com.sgf.favshop;
 
+import ExemplePhoto.listener.AddPhotoPressListener;
+import ExemplePhoto.tool.ImageUtility;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.sgf.libext.ZBarConstants;
@@ -19,6 +23,10 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	private SaveNewFAVButton _saveNewFAV_button;
 	private static final int ZBAR_SCANNER_REQUEST = 0;
 	private static final int ZBAR_QR_SCANNER_REQUEST = 1;
+	private ImageView imageView;
+	private final static int CAMERA_REQUEST = 24;
+	private final static int SELECT_PHOTO = 42;
+	private ImageButton buttonAdd;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,15 +35,18 @@ public class NewFAVActivity extends Activity implements OnClickListener{
         
         // -- Listeners -- //
         _saveNewFAV_button = new SaveNewFAVButton(this);
+        
+        buttonAdd = (ImageButton) findViewById(R.id.imageButtonTakePic);
         Button saveNewFAV_button = (Button) findViewById(R.id.buttonSave);
         Button scan_button = (Button) findViewById(R.id.buttonScan);
-        saveNewFAV_button.setOnClickListener(_saveNewFAV_button);
+        imageView = (ImageView)this.findViewById(R.id.imageViewPic);
         
+        buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST));
+        saveNewFAV_button.setOnClickListener(_saveNewFAV_button);
         scan_button.setOnClickListener(this);
     }
     
     
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
@@ -54,7 +65,7 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{    
-	    if (resultCode == RESULT_OK) 
+	    if (resultCode == RESULT_FIRST_USER) 
 	    {
 	        // Scan result is available by making a call to data.getStringExtra(ZBarConstants.SCAN_RESULT)
 	        // Type of the scan result is available by making a call to data.getStringExtra(ZBarConstants.SCAN_RESULT_TYPE)
@@ -66,5 +77,17 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	    } else if(resultCode == RESULT_CANCELED) {
 	        Toast.makeText(this, "Camera unavailable", Toast.LENGTH_SHORT).show();
 	    }
+	    
+	    if(resultCode == RESULT_OK){
+			switch(requestCode){
+				case CAMERA_REQUEST:
+					ImageUtility.display_photo(this,imageView,data.getData(),128,128);
+					break;
+				case SELECT_PHOTO:
+					ImageUtility.display_photo(this,imageView,data.getData(),128,-1);
+					break;
+			}
+		}
+
 	}
 }

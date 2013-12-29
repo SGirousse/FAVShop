@@ -141,7 +141,7 @@ public class ZBarScannerActivity extends Activity implements Camera.PreviewCallb
                     Intent dataIntent = new Intent();
                     dataIntent.putExtra(SCAN_RESULT, symData);
                     dataIntent.putExtra(SCAN_RESULT_TYPE, sym.getType());
-                    setResult(Activity.RESULT_OK, dataIntent);
+                    setResult(Activity.RESULT_FIRST_USER, dataIntent);
                     finish();
                     break;
                 }
