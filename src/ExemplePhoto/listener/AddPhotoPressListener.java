@@ -2,6 +2,7 @@ package ExemplePhoto.listener;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -17,7 +18,7 @@ public class AddPhotoPressListener implements OnClickListener {
 	
 	@Override
     public void onClick(View v) {
-		Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+		Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         activity.startActivityForResult(cameraIntent, CAMERA_REQUEST); 
     }
 }
