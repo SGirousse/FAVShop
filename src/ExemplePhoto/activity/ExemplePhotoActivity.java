@@ -1,7 +1,5 @@
 package ExemplePhoto.activity;
 
-import ExemplePhoto.listener.AddPhotoPressListener;
-import ExemplePhoto.tool.ImageUtility;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.sgf.favshop.R;
+import com.sgf.listeners.AddPhotoPressListener;
+import com.sgf.tool.ImageUtility;
 
 public class ExemplePhotoActivity extends Activity {
 

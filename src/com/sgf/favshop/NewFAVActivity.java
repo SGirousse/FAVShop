@@ -1,7 +1,5 @@
 package com.sgf.favshop;
 
-import ExemplePhoto.listener.AddPhotoPressListener;
-import ExemplePhoto.tool.ImageUtility;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +14,9 @@ import android.widget.Toast;
 
 import com.sgf.libext.ZBarConstants;
 import com.sgf.libext.ZBarScannerActivity;
+import com.sgf.listeners.AddPhotoPressListener;
 import com.sgf.listeners.SaveNewFAVButton;
+import com.sgf.tool.ImageUtility;
 
 public class NewFAVActivity extends Activity implements OnClickListener{
 	

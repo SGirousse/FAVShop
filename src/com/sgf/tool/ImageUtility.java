@@ -1,4 +1,4 @@
-package ExemplePhoto.tool;
+package com.sgf.tool;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
