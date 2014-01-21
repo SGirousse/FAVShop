@@ -112,7 +112,7 @@ public class GcmIntentService extends IntentService{
     }
 
 	private void updateDatabase(String message){
-		
+		Log.i("TRACE_NOTIF", "private void updateDatabase(String message)");
 		try {
 			JSONObject json = new JSONObject(message);
 			
@@ -122,14 +122,17 @@ public class GcmIntentService extends IntentService{
 			String sailprice = json.getString("nvPrix");
 			
 			// --- DB Update --- //
+			_article_dao = new ArticleDAO(this);
 			_article_dao.open(true);
 			
 			//Get matching flashed articles
 			ArrayList<Article> a_list = _article_dao.getArticleByBarcode(barcode);
 			
 			//If there's an article matching
-			if(!a_list.isEmpty()){
+			if(a_list!=null){
+				Log.i("TRACE_NOTIF", "private void updateDatabase(String message) : at least one article exists.");
 				if(a_list.size()==1){ //Most of the cases
+					Log.i("TRACE_NOTIF", "private void updateDatabase(String message) : "+a_list.get(0).getBarcode()+" "+a_list.get(0).getTitle());
 					Article a = a_list.get(0);
 					a.setEndofsail(new Date(endofsail));
 					a.setSailprice(Float.valueOf(sailprice));
@@ -144,6 +147,9 @@ public class GcmIntentService extends IntentService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+
+		Log.i("TRACE_NOTIF", "private void updateDatabase(String message) - THE END");
 		
 	}
 	
