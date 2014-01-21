@@ -25,7 +25,7 @@ public class FAVViewListView implements OnItemClickListener{
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		Log.i("TRACE", "FAVViewListView *** public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3)");
 
-		int id = _a_list.get(arg2).getId();
+		long id = _a_list.get(arg2).getId();
 		
 		//Ask for the profile activity
 		Intent i = new Intent(_FAVView_activity.getBaseContext(), ShowFAVActivity.class );

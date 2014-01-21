@@ -20,7 +20,7 @@ public class FAVViewActivity extends Activity {
 	private FAVViewListItem _FAVview_listitem;
 	private FAVViewListView _FAVview_listview;
 	private InfoButtonListener _infoButtonListener;
-	private ArticleDAO article_dao;
+	private ArticleDAO _article_dao;
 	private List<Article> _article_list;
 	
 	@Override
@@ -28,17 +28,12 @@ public class FAVViewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_favview);
 		
-		/*article_dao = new ArticleDAO(this);
-		article_dao.open(true);
-		article_dao.insertArticle(new Article("666777","Un article diabolique", "Cet article diabolique respire la chance ! Je le veux, je le veux ! ... mais pas à n\'importe quel prix.","","UPPA-store, everything on discount",13.37f,0.42f,new Date(2014,02,23),new Date()));
-		article_dao.close();*/
-		
 		// -- Articles list init -- //
-		article_dao = new ArticleDAO(this);
-		article_dao.open(false);
+		_article_dao = new ArticleDAO(this);
+		_article_dao.open(false);
 		_article_list=new ArrayList<Article>();
-		_article_list=article_dao.getAllArticles();
-		article_dao.close();
+		_article_list=_article_dao.getAllArticles();
+		_article_dao.close();
 				
 		//list view
 		ListView lv_favs = (ListView) findViewById(R.id.listViewFavView);

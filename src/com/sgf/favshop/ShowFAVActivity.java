@@ -24,7 +24,7 @@ public class ShowFAVActivity extends Activity{
 		
         //Get the article to show, it has to be put into the extra
         Bundle data = getIntent().getExtras();
-        int id = (Integer) data.get("article_toshow");
+        long id = (Long) data.get("article_toshow");
 		
 		// -- Articles list init -- //
 		_article_dao = new ArticleDAO(this);
