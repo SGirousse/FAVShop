@@ -1,5 +1,6 @@
 package com.sgf.listeners;
 
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -50,7 +51,8 @@ public class SaveNewFAVButton implements OnClickListener{
 			articleDAO.open(true);
 			
 			//new Article(barcode, title, description, url, store, initprice, sailprice, endofsail, flashdate)
-			articleDAO.insertArticle(new Article(barcode, title, description, path, store, initprice));
+			long id = articleDAO.insertArticle(new Article(barcode, title, description, path, store, initprice));
+			Log.i("TRACE", "SaveNewFAVButton *** public void onClick(View v) : Article numero "+id+" enregistre");
 			
 			articleDAO.close();
 			

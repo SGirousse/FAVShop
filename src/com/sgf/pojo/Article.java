@@ -6,7 +6,7 @@ import android.util.Log;
 
 public class Article {
 	
-	private int _id;			//should be auto-incremented from db insert
+	private long _id;			//should be auto-incremented from db insert
 	private String _barcode;	
 	private String _title;		
 	private String _description;
@@ -18,7 +18,6 @@ public class Article {
 	private Date _flashdate;
 	
 	public Article(){
-		_id=-1;
 		_barcode="";
 		_title="";
 		_description="";
@@ -31,7 +30,6 @@ public class Article {
 	}
 	
 	public Article(String barcode, String store, float initprice){
-		_id=-1;
 		_barcode=barcode;
 		_title="";
 		_description="";
@@ -45,7 +43,6 @@ public class Article {
 	
 	public Article(String barcode, String title, String description, String url, 
 			String store, float initprice){
-		_id=-1;
 		_barcode=barcode;
 		_title=title;
 		_description=description;
@@ -60,7 +57,6 @@ public class Article {
 	public Article(String barcode, String title, String description, String url, 
 			String store, float initprice, float sailprice, Date endofsail,
 			Date flashdate){
-		_id=-1;
 		_barcode=barcode;
 		_title=title;
 		_description=description;
@@ -87,11 +83,11 @@ public class Article {
 		_flashdate=flashdate;		
 	}
 	
-	public void setId(int id){
+	public void setId(long id){
 		_id=id;
 	}
 	
-	public int getId(){
+	public long getId(){
 		return _id;
 	}
 	

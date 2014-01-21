@@ -121,7 +121,7 @@ public class ArticleDAO {
 		return a_list;
 	}
 	
-	public Article getArticleById(int id){
+	public Article getArticleById(long id){
 		Article a = null;
 		
 		//select * from table_articles
@@ -167,8 +167,8 @@ public class ArticleDAO {
 		a.setStore(c.getString(5));
 		a.setInitprice(c.getFloat(6));
 		a.setSailprice(c.getFloat(7));
-		a.setEndofsail(new Date(c.getString(8)));
-		a.setFlashdate(new Date(c.getString(9)));
+		/*a.setEndofsail(new Date(c.getString(8)));
+		a.setFlashdate(new Date(c.getString(9)));*/
 		
 		return a;
 	}
