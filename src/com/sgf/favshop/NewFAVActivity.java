@@ -26,6 +26,7 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	private final static int CAMERA_REQUEST = 24;
 	private final static int SELECT_PHOTO = 42;
 	private ImageButton buttonAdd;
+	private String _image_view_uri;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,6 @@ public class NewFAVActivity extends Activity implements OnClickListener{
         return true;
     }
 
-
-
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
@@ -74,12 +73,18 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 			switch(requestCode){
 				case CAMERA_REQUEST:
 					ImageUtility.display_photo(this,imageView,data.getData(),128,128);
+					_image_view_uri=data.getDataString();
 					break;
 				case SELECT_PHOTO:
 					ImageUtility.display_photo(this,imageView,data.getData(),128,-1);
+					_image_view_uri=data.getDataString();
 					break;
 			}
 		}
 
+	}
+	
+	public String getImageViewURI(){
+		return _image_view_uri;
 	}
 }

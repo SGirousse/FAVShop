@@ -2,9 +2,11 @@ package com.sgf.favshop;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Surface;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +21,7 @@ public class ShowFAVActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-        //Get the player to show, it has to be put into the extra
+        //Get the article to show, it has to be put into the extra
         Bundle data = getIntent().getExtras();
         int id = (Integer) data.get("article_toshow");
 		
@@ -49,8 +51,10 @@ public class ShowFAVActivity extends Activity{
 			TextView tv_barcode = (TextView) findViewById(R.id.textViewShowFavBarcode);
 			tv_barcode.setText(a.getBarcode());
 			
-			/*ImageView iv_pic = (ImageView) findViewById(R.id.imageViewShowFavPic);
-			iv_pic.setImageURI(Uri.parse(a.getUrl()));*/
+			if(a.getUrl()!=null){
+				ImageView iv_pic = (ImageView) findViewById(R.id.imageViewShowFavPic);
+				iv_pic.setImageURI(Uri.parse(a.getUrl()));
+			}
 			
 			TextView tv_description = (TextView) findViewById(R.id.textViewShowFavDescription);
 			tv_description.setText(a.getDescription());

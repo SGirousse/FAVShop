@@ -48,6 +48,7 @@ public class ArticleDAO {
 	 */
 	public long insertArticle(Article a){
 		Log.i("TRACE_DB", "PlayerDataSource *** public long insertPlayer(Player p)");
+		Log.i("TRACE_DB", a.getBarcode());
 		
 		ContentValues values = new ContentValues();
 		
@@ -115,6 +116,8 @@ public class ArticleDAO {
 	    //close the cursor
 	    cursor.close();
 		    
+
+		Log.i("TRACE_TMP", "Liste prete a etre retournee");
 		return a_list;
 	}
 	

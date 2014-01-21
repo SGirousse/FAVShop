@@ -35,7 +35,7 @@ public class SaveNewFAVButton implements OnClickListener{
 		String title = et_article.getText().toString();
 		String description = et_description.getText().toString();
 		float initprice = Float.valueOf(tv_price.getText().toString());
-		String path = "";
+		String path = _newFAV_activity.getImageViewURI();
 		String store = "store";
 		
 		//More variables
@@ -45,9 +45,6 @@ public class SaveNewFAVButton implements OnClickListener{
 		if(barcode.length()<1){
 			sToast="Code-barre obligatoire.";
 		}else{
-			//Save picture and get path
-			// TODO LAPIN
-			
 			//Save new data in db
 			ArticleDAO articleDAO = new ArticleDAO(_newFAV_activity);
 			articleDAO.open(true);
