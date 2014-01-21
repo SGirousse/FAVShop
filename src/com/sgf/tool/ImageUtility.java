@@ -5,12 +5,14 @@ import java.io.InputStream;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.widget.ImageView;
 
 public final class ImageUtility {
@@ -47,11 +49,20 @@ public final class ImageUtility {
 	    return cursor.getInt(0);
 	}
 	
-	public static void display_photo(Activity activity, ImageView imageView, Uri uri, int widthHope, int heightHope){
+	public static float convertDpToPixel(float dp, Context context){
+	    Resources resources = context.getResources();
+	    DisplayMetrics metrics = resources.getDisplayMetrics();
+	    float px = dp * (metrics.densityDpi / 160f);
+	    return px;
+	}
+	
+	public static void display_photo(Activity activity, ImageView imageView, Uri uri, float dpWidthHope, float dpHeightHope){
 		//Declaration des variables
 		InputStream imageStream;
         Bitmap photo;
         int orientation;
+        float pxWidthHope = convertDpToPixel(dpWidthHope,activity);
+        float pxHeightHope = convertDpToPixel(dpHeightHope,activity);;
         
         //Affichage de l'image si possible
 		try {
@@ -71,8 +82,8 @@ public final class ImageUtility {
 				}
 				
 				//Modification de l'image si necessaire
-				if(widthHope > 0 || heightHope > 0){
-					photo = resizedBitmap(photo,widthHope,heightHope);
+				if(pxWidthHope > 0 || pxHeightHope > 0){
+					photo = resizedBitmap(photo,pxWidthHope,pxHeightHope);
 				}
 				
 				//On affiche la photo
@@ -83,24 +94,24 @@ public final class ImageUtility {
 		}
 	}
 	
-	public static Bitmap resizedBitmap(Bitmap image, int widthHope, int heightHope) {
+	public static Bitmap resizedBitmap(Bitmap image, float pxWidthHope, float pxHeightHope) {
 		//Declaration des variables
-		int width = image.getWidth();
-        int height = image.getHeight();
-        float widthRatio = width / widthHope;
-        float heightRatio = height / heightHope;
+		float width = image.getWidth();
+		float height = image.getHeight();
+        float widthRatio = width / pxWidthHope;
+        float heightRatio = height / pxHeightHope;
         
         //Si le ratio de la largeur est superieur a celle de la hauteur
         //La transformation sera basee sur la largeur
         if (widthRatio > heightRatio) {
-            width = widthHope;
+            width = pxWidthHope;
             height = (int) (height / widthRatio);
         } else { //Sinon sur la hauteur
-            height = heightHope;
+            height = pxHeightHope;
             width = (int) (width / heightRatio);
         }
         
         //Renvoie de l'image transforme
-        return Bitmap.createScaledBitmap(image, width, height, true);
+        return Bitmap.createScaledBitmap(image, (int)width, (int)height, true);
 	}
 }
