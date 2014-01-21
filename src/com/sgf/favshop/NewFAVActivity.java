@@ -1,8 +1,15 @@
 package com.sgf.favshop;
 
+import java.io.File;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.text.format.Time;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,12 +34,39 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	private final static int SELECT_PHOTO = 42;
 	private ImageButton buttonAdd;
 	private String _image_view_uri;
+	private final String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/picFolder/"; 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
+		File newDir = null;
+		File newFile = null;
+		String fileName = null;
+		Time now = new Time();
+		
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_newfav);
         
+        //Load uri ifexists
+        if (savedInstanceState != null){
+        	_image_view_uri = savedInstanceState.getString("uri");
+        }else{
+    		try {
+    			//Photos taken by the ACTION_IMAGE_CAPTURE are not registered
+    			//in the MediaStore automatically on all devices
+    			newDir = new File(dir);
+    			newDir.mkdirs();
+    			
+    			now.setToNow();
+    			fileName = dir+"FAVShop"+now.getCurrentTimezone()+".jpg";
+    			newFile = new File(fileName);
+    			newFile.createNewFile();
+    			
+    			_image_view_uri = Uri.fromFile(newFile).toString();
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		}
+        }
+        
+        setContentView(R.layout.activity_newfav);    
         // -- Listeners -- //
         _saveNewFAV_button = new SaveNewFAVButton(this);
         
@@ -41,11 +75,17 @@ public class NewFAVActivity extends Activity implements OnClickListener{
         Button scan_button = (Button) findViewById(R.id.buttonScan);
         imageView = (ImageView)this.findViewById(R.id.imageViewPic);
         
-        buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST));
+        buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST,Uri.parse(_image_view_uri)));
         saveNewFAV_button.setOnClickListener(_saveNewFAV_button);
         scan_button.setOnClickListener(this);
     }
     
+    @Override
+    public void onSaveInstanceState(Bundle bundle)
+    {
+    	super.onSaveInstanceState(bundle);
+    	bundle.putString("uri", _image_view_uri);
+    }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,7 +102,8 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
-	{    
+	{   	
+
 	    if (resultCode == RESULT_FIRST_USER) 
 	    {
 	        EditText barcode_box = (EditText) findViewById(R.id.editTextNewFavBarcodeContent);
@@ -70,14 +111,18 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	    } else if(resultCode == RESULT_CANCELED) {
 	        Toast.makeText(this, "Exit cam", Toast.LENGTH_SHORT).show();
 	    } else if(resultCode == RESULT_OK){
+
+	    	//Some camera apps ignore the putExtra uri, and store the pic in a different place
+	    	if(data != null && data.getData() != null){
+	    		_image_view_uri = data.getData().toString();
+	    	}
+	    	
 			switch(requestCode){
 				case CAMERA_REQUEST:
-					ImageUtility.display_photo(this,imageView,data.getData(),128,128);
-					_image_view_uri=data.getDataString();
+					ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,60);
 					break;
 				case SELECT_PHOTO:
-					ImageUtility.display_photo(this,imageView,data.getData(),128,-1);
-					_image_view_uri=data.getDataString();
+					ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,-1);
 					break;
 			}
 		}
