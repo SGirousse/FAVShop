@@ -45,8 +45,8 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 		
         super.onCreate(savedInstanceState);
         
-        //Load uri ifexists
-        if (savedInstanceState != null){
+        //Load uri if exists
+       /* if (savedInstanceState != null){
         	_image_view_uri = savedInstanceState.getString("uri");
         }else{
     		try {
@@ -64,7 +64,7 @@ public class NewFAVActivity extends Activity implements OnClickListener{
     		} catch (IOException e) {
     			e.printStackTrace();
     		}
-        }
+        }*/
         
         setContentView(R.layout.activity_newfav);    
         // -- Listeners -- //
@@ -75,7 +75,7 @@ public class NewFAVActivity extends Activity implements OnClickListener{
         Button scan_button = (Button) findViewById(R.id.buttonScan);
         imageView = (ImageView)this.findViewById(R.id.imageViewPic);
         
-        buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST,Uri.parse(_image_view_uri)));
+        //buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST,Uri.parse(_image_view_uri)));
         saveNewFAV_button.setOnClickListener(_saveNewFAV_button);
         scan_button.setOnClickListener(this);
     }
@@ -115,16 +115,16 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	    	//Some camera apps ignore the putExtra uri, and store the pic in a different place
 	    	if(data != null && data.getData() != null){
 	    		_image_view_uri = data.getData().toString();
+	        	
+				switch(requestCode){
+					case CAMERA_REQUEST:
+						ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,60);
+						break;
+					case SELECT_PHOTO:
+						ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,-1);
+						break;
+				}
 	    	}
-	    	
-			switch(requestCode){
-				case CAMERA_REQUEST:
-					ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,60);
-					break;
-				case SELECT_PHOTO:
-					ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,-1);
-					break;
-			}
 		}
 
 	}
