@@ -1,5 +1,6 @@
 package com.sgf.favshop;
 
+import com.sgf.tool.ImageUtility;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
@@ -53,7 +54,7 @@ public class ShowFAVActivity extends Activity{
 			
 			if(a.getUrl()!=null){
 				ImageView iv_pic = (ImageView) findViewById(R.id.imageViewShowFavPic);
-				iv_pic.setImageURI(Uri.parse(a.getUrl()));
+				ImageUtility.display_photo(this,iv_pic,Uri.parse(a.getUrl()),500,500);
 			}
 			
 			TextView tv_description = (TextView) findViewById(R.id.textViewShowFavDescription);
