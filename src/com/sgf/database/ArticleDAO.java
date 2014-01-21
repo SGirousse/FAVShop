@@ -69,13 +69,13 @@ public class ArticleDAO {
 	/**
 	 * Update an article (all the values are updated) according to the given id and the article object.
 	 * 
-	 * @param id int
+	 * @param id long
 	 * @param a Article
 	 * @return int
 	 * @see Article
 	 */
-	public int updateArticle(int id, Article a){
-		Log.i("TRACE_DB", "ArticleDAO *** public int updateArticle(int id, Article a)");
+	public int updateArticle(long id, Article a){
+		Log.i("TRACE_DB", "ArticleDAO *** public int updateArticle(long id, Article a)");
 		ContentValues values = new ContentValues();
 		
 		values.put(_articles_db_helper.COL_ARTICLE_BARCODE, a.getBarcode());
@@ -134,6 +134,22 @@ public class ArticleDAO {
 		
 		return a;
 		
+	}
+	
+	public ArrayList <Article> getArticleByBarcode(String barcode){
+		ArrayList<Article> a_list = new ArrayList<Article>();
+		
+		//select * from table_articles
+		Cursor cursor = _articles_db.query(_articles_db_helper.TABLE_CUSTOMER_ARTICLE,
+		        null, _articles_db_helper.COL_ARTICLE_BARCODE + "=?", new String[]{barcode}, null, null, null);
+		
+		if(cursor.moveToFirst()){
+			do{
+				a_list.add(cursorToArticle(cursor));
+			}while(cursor.moveToNext());
+		}
+		
+		return a_list;
 	}
 	
 	/**
