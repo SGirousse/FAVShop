@@ -6,6 +6,8 @@ package com.sgf.libext;
  * 
  *  */
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -134,7 +136,13 @@ public class GcmIntentService extends IntentService{
 				if(a_list.size()==1){ //Most of the cases
 					Log.i("TRACE_NOTIF", "private void updateDatabase(String message) : "+a_list.get(0).getBarcode()+" "+a_list.get(0).getTitle());
 					Article a = a_list.get(0);
-					a.setEndofsail(new Date(endofsail));
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+					try {
+						Date d = sdf.parse(endofsail);
+						a.setEndofsail(d);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
 					a.setSailprice(Float.valueOf(sailprice));
 					_article_dao.updateArticle(a.getId(), a);
 					_id_article_notif = a.getId();

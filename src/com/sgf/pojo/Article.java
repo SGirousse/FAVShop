@@ -173,6 +173,6 @@ public class Article {
 			}
 		}
 		
-		return true;//onSail;
+		return onSail;
 	}
 }
