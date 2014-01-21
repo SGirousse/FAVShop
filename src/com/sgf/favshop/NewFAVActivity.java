@@ -70,9 +70,7 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	        barcode_box.setText(data.getStringExtra(ZBarConstants.SCAN_RESULT));
 	    } else if(resultCode == RESULT_CANCELED) {
 	        Toast.makeText(this, "Exit cam", Toast.LENGTH_SHORT).show();
-	    }
-	    
-	    if(resultCode == RESULT_OK){
+	    } else if(resultCode == RESULT_OK){
 			switch(requestCode){
 				case CAMERA_REQUEST:
 					ImageUtility.display_photo(this,imageView,data.getData(),128,128);
