@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.sgf.libext.ZBarConstants;
 import com.sgf.libext.ZBarScannerActivity;
 import com.sgf.listeners.AddPhotoPressListener;
+import com.sgf.listeners.SearchPhotoPressListener;
+import com.sgf.listeners.ClickImageView;
 import com.sgf.listeners.SaveNewFAVButton;
 import com.sgf.tool.ImageUtility;
 
@@ -24,11 +26,14 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	
 	private SaveNewFAVButton _saveNewFAV_button;
 	private static final int ZBAR_SCANNER_REQUEST = 0;
-	private ImageView imageView = null;
+	private ImageView imageView;
 	private final static int CAMERA_REQUEST = 24;
 	private final static int SELECT_PHOTO = 42;
-	private ImageButton buttonAdd = null;
-	private String _image_view_uri = null;
+	private ImageButton buttonTakePic;
+	private ImageButton buttonChoosePic;
+	private String _image_view_uri;
+	private float dpWidthHope = 60;
+	private float dpHeightHope = 60;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,12 +44,14 @@ public class NewFAVActivity extends Activity implements OnClickListener{
         // -- Listeners -- //
         _saveNewFAV_button = new SaveNewFAVButton(this);
         
-        buttonAdd = (ImageButton) findViewById(R.id.imageButtonTakePic);
+        buttonTakePic = (ImageButton) findViewById(R.id.imageButtonTakePic);
+        buttonChoosePic = (ImageButton) findViewById(R.id.imageButtonChoosePic);
         Button saveNewFAV_button = (Button) findViewById(R.id.buttonSave);
         Button scan_button = (Button) findViewById(R.id.buttonScan);
         imageView = (ImageView)this.findViewById(R.id.imageViewPic);
         
-        buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST));
+        buttonTakePic.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST));
+        buttonChoosePic.setOnClickListener(new SearchPhotoPressListener(this,SELECT_PHOTO));
         saveNewFAV_button.setOnClickListener(_saveNewFAV_button);
         scan_button.setOnClickListener(this);
         
@@ -71,7 +78,8 @@ public class NewFAVActivity extends Activity implements OnClickListener{
         super.onRestoreInstanceState(savedInstanceState);
         _image_view_uri = savedInstanceState.getString("uri");
         if(_image_view_uri != null){
-        	ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,60);
+        	ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),dpWidthHope,dpHeightHope);
+        	imageView.setOnClickListener(new ClickImageView(this,_image_view_uri));
         }
     }
     
@@ -103,13 +111,14 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	    	//Kitkat doesn't work
 	    	if(data != null && data.getData() != null){
 	    		_image_view_uri = data.getData().toString();
-	        	
+	    		imageView.setOnClickListener(new ClickImageView(this,_image_view_uri));
+	    		
 				switch(requestCode){
 					case CAMERA_REQUEST:
-						ImageUtility.display_photo(this,imageView,data.getData(),60,60);
+						ImageUtility.display_photo(this,imageView,data.getData(),dpWidthHope,dpHeightHope);
 						break;
 					case SELECT_PHOTO:
-						ImageUtility.display_photo(this,imageView,data.getData(),60,-1);
+						ImageUtility.display_photo(this,imageView,data.getData(),dpWidthHope,dpHeightHope);
 						break;
 				}
 	    	}else{

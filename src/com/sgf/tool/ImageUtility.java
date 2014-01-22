@@ -2,8 +2,6 @@ package com.sgf.tool;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -56,24 +54,24 @@ public final class ImageUtility {
 	    return px;
 	}
 	
-	public static void display_photo(Activity activity, ImageView imageView, Uri uri, float dpWidthHope, float dpHeightHope){
+	public static void display_photo(Context context, ImageView imageView, Uri uri, float dpWidthHope, float dpHeightHope){
 		//Declaration des variables
 		InputStream imageStream;
         Bitmap photo;
         int orientation;
-        float pxWidthHope = convertDpToPixel(dpWidthHope,activity);
-        float pxHeightHope = convertDpToPixel(dpHeightHope,activity);;
+        float pxWidthHope = convertDpToPixel(dpWidthHope,context);
+        float pxHeightHope = convertDpToPixel(dpHeightHope,context);
         
         //Affichage de l'image si possible
 		try {
 			//Recuperation de l'image se trouvant a l'URI
-			imageStream = activity.getContentResolver().openInputStream(uri);
+			imageStream = context.getContentResolver().openInputStream(uri);
 			photo = BitmapFactory.decodeStream(imageStream);
 			
 			//S'il y avait bien une photo a l'URI
 			if (photo != null) {
 				//Recuperation de l'orientation de l'image
-				orientation = getOrientation(activity,uri);
+				orientation = getOrientation(context,uri);
 				
 				//Test si l'orientation est la meme que lors de la prise de la photo
 				if(orientation != 0){

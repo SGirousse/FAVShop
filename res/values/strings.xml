@@ -16,6 +16,7 @@
     <string name="newfav_price_text">Prix :</string>
     <string name="newfav_price_content">0.0</string>
     <string name="newfav_takepic_button">Ajouter une photo</string>
+        <string name="newfav_choosepic_button">Sélectionner une photo</string>
     <string name="newfav_pic_imageview">Photo correspondant à l\'article</string>
     <string name="newfav_save_button">Enregistrer</string>
     

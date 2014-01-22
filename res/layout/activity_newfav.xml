@@ -67,7 +67,7 @@
         android:id="@+id/layoutPic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="4"
+        android:weightSum="5"
         android:layout_below="@+id/layoutPrice" >
 
         <ImageView
@@ -76,16 +76,26 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:src="@android:drawable/ic_popup_disk_full"
-            android:contentDescription="@string/newfav_pic_imageview" />
+            android:contentDescription="@string/newfav_pic_imageview"
+            android:clickable="true" />
 
         <ImageButton
             android:id="@+id/imageButtonTakePic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/newfav_takepic_button"
             android:contentDescription="@string/newfav_takepic_button"
-            android:src="@android:drawable/ic_menu_camera" />
+            android:src="@android:drawable/ic_menu_camera"
+            android:text="@string/newfav_takepic_button" />
+
+        <ImageButton
+            android:id="@+id/imageButtonChoosePic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/newfav_choosepic_button"
+            android:contentDescription="@string/newfav_choosepic_button"
+            android:src="@android:drawable/ic_menu_gallery" />
 
     </LinearLayout>
     
