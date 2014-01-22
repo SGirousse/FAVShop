@@ -14,9 +14,10 @@ import android.text.style.StrikethroughSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.sgf.favshop.R;
@@ -49,6 +50,14 @@ public class FAVViewListItem extends ArrayAdapter<Article>{
 		
 		//Article to show
 		Article a = _a_list.get(position);
+		
+		CheckBox check_box_article = (CheckBox) convertView.findViewById(R.id.checkBoxDelete);
+		check_box_article.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//Well... nothing special to do, but it has to be done.
+			}
+		});
 
 		TextView text_view_barcode = (TextView) convertView.findViewById(R.id.textViewFavViewBarcode);		
 		text_view_barcode.setText(a.getBarcode());
