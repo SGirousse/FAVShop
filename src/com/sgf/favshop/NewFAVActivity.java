@@ -50,7 +50,8 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 		////////////////////////////////////
 		/// TEST AND DEBUG - TO BE FIXED ///
         TextView tv = (TextView) findViewById(R.id.textViewNewFavPriceContent);
-        tv.setText((int) (Math.random()*1000));
+        String s = String.valueOf((int) (Math.random()*1000));
+        tv.setText(s);
 		/// TEST AND DEBUG - TO BE FIXED ///		
 		////////////////////////////////////
     }
