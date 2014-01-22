@@ -40,14 +40,7 @@ public class SaveNewFAVButton implements OnClickListener{
 		String store = "store";
 		
 		//More variables
-		String sToast = "";
-		
-		////////////////////////////////////
-		/// TEST AND DEBUG - TO BE FIXED ///
-		initprice = (float) (Math.random()*1000);
-		/// TEST AND DEBUG - TO BE FIXED ///		
-		////////////////////////////////////
-		
+		String sToast = "";		
 		
 		//Check articles data are valid
 		if(barcode.length()<1){

@@ -100,6 +100,7 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 				}
 	    	}else{
 	    		Toast t = Toast.makeText(this, "Your version is not supported camera", Toast.LENGTH_SHORT);
+	    		t.show();
 	    	}
 		}
 
