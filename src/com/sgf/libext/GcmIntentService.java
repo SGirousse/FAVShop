@@ -37,6 +37,8 @@ public class GcmIntentService extends IntentService{
     public static final String TAG = "GCM Demo";
 	private ArticleDAO _article_dao;
 	private long _id_article_notif;
+	String barcode;
+	Article a;
 
 	public GcmIntentService() {
 		super("GcmIntentService");
@@ -76,6 +78,9 @@ public class GcmIntentService extends IntentService{
 	                // Update database according to received message
 	                updateDatabase(msg);
 	                // Post notification of received message
+	                
+	                
+	                
 	                sendNotification(msg);
 	                Log.i(TAG, "Received: " + extras.toString());
 	            }
@@ -92,21 +97,13 @@ public class GcmIntentService extends IntentService{
 			i.putExtra("article_toshow", _id_article_notif);
 			
 			PendingIntent contentIntent = PendingIntent.getActivity(this, 0,  i, PendingIntent.FLAG_UPDATE_CURRENT);
-	    
-	
-	/*
-	        Intent myintent = new Intent(this, ReceiveActivity.class);
-			myintent.putExtra("message", msg);
-	        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-	        		myintent, PendingIntent.FLAG_UPDATE_CURRENT);*/
-	
 		    NotificationCompat.Builder mBuilder =
 		            new NotificationCompat.Builder(this)
-		    .setSmallIcon(R.drawable.ic_stat_gcm)
-		    .setContentTitle("GCM Notification")
+		    .setSmallIcon(R.drawable.solde)
+		    .setContentTitle("FavShop")
 		    .setStyle(new NotificationCompat.BigTextStyle()
-		    .bigText(msg))
-		    .setContentText(msg);
+		    .bigText("Un de vos produit est en solde  : "+ a.getTitle()  + " ! Cliquez pour en savoir plus"))
+		    .setContentText("Un de vos produit est en solde : "+ a.getTitle()  + " ! Cliquez pour en savoir plus");
 		
 		    mBuilder.setContentIntent(contentIntent);
 		    mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
@@ -118,7 +115,7 @@ public class GcmIntentService extends IntentService{
 		try {
 			JSONObject json = new JSONObject(message);
 			
-			String barcode = json.getString("codebarre");
+			barcode = json.getString("codebarre");
 			String store = json.getString("magasin");
 			String endofsail = json.getString("datefin");
 			String sailprice = json.getString("nvPrix");
@@ -135,7 +132,7 @@ public class GcmIntentService extends IntentService{
 				Log.i("TRACE_NOTIF", "private void updateDatabase(String message) : at least one article exists.");
 				if(a_list.size()==1){ //Most of the cases
 					Log.i("TRACE_NOTIF", "private void updateDatabase(String message) : "+a_list.get(0).getBarcode()+" "+a_list.get(0).getTitle());
-					Article a = a_list.get(0);
+					a = a_list.get(0);
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 					try {
 						Date d = sdf.parse(endofsail);
