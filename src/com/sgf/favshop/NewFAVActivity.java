@@ -2,6 +2,7 @@ package com.sgf.favshop;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -23,11 +24,11 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	
 	private SaveNewFAVButton _saveNewFAV_button;
 	private static final int ZBAR_SCANNER_REQUEST = 0;
-	private ImageView imageView;
+	private ImageView imageView = null;
 	private final static int CAMERA_REQUEST = 24;
 	private final static int SELECT_PHOTO = 42;
-	private ImageButton buttonAdd;
-	private String _image_view_uri;
+	private ImageButton buttonAdd = null;
+	private String _image_view_uri = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,18 @@ public class NewFAVActivity extends Activity implements OnClickListener{
     public void onSaveInstanceState(Bundle bundle)
     {
     	super.onSaveInstanceState(bundle);
-    	bundle.putString("uri", _image_view_uri);
+    	if(_image_view_uri != null){
+    		bundle.putString("uri", _image_view_uri);
+    	}
+    }
+    
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        _image_view_uri = savedInstanceState.getString("uri");
+        if(_image_view_uri != null){
+        	ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,60);
+        }
     }
     
     @Override
