@@ -28,22 +28,35 @@ public class DeleteArticleButton implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
+		Article a=null;
+		
 		_article_dao = new ArticleDAO(_c);
 		_article_dao.open(true);		
 
 		//delete all the checked elements in database
 		for(int i=0;i<_article_to_delete_list.size();i++){
 			_article_dao.deleteArticleById(_article_to_delete_list.get(i));
+			deleteArticleById(_article_to_delete_list.get(i));
 		}
 		
 		//clear old lists
 		_article_to_delete_list.clear();
-		_article_list.clear();
-			
-		//rebuild the item list
-		_article_list = _article_dao.getAllArticles();
+		
 		_article_dao.close();
 		
 		_adapter.notifyDataSetChanged();
+	}
+	
+	public void deleteArticleById(long id){
+		int i = 0;
+		Article a = null;
+		
+		while(i<_article_list.size() && a==null){
+			if(_article_list.get(i).getId()==id){
+				_article_list.remove(i);
+			}else{
+				i++;
+			}
+		}
 	}
 }
