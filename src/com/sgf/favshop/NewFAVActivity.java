@@ -34,37 +34,11 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	private final static int SELECT_PHOTO = 42;
 	private ImageButton buttonAdd;
 	private String _image_view_uri;
-	private final String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/picFolder/"; 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
-		File newDir = null;
-		File newFile = null;
-		String fileName = null;
-		Time now = new Time();
 		
         super.onCreate(savedInstanceState);
-        
-        //Load uri if exists
-       /* if (savedInstanceState != null){
-        	_image_view_uri = savedInstanceState.getString("uri");
-        }else{
-    		try {
-    			//Photos taken by the ACTION_IMAGE_CAPTURE are not registered
-    			//in the MediaStore automatically on all devices
-    			newDir = new File(dir);
-    			newDir.mkdirs();
-    			
-    			now.setToNow();
-    			fileName = dir+"FAVShop"+now.getCurrentTimezone()+".jpg";
-    			newFile = new File(fileName);
-    			newFile.createNewFile();
-    			
-    			_image_view_uri = Uri.fromFile(newFile).toString();
-    		} catch (IOException e) {
-    			e.printStackTrace();
-    		}
-        }*/
         
         setContentView(R.layout.activity_newfav);    
         // -- Listeners -- //
@@ -75,7 +49,7 @@ public class NewFAVActivity extends Activity implements OnClickListener{
         Button scan_button = (Button) findViewById(R.id.buttonScan);
         imageView = (ImageView)this.findViewById(R.id.imageViewPic);
         
-        //buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST,Uri.parse(_image_view_uri)));
+        buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST));
         saveNewFAV_button.setOnClickListener(_saveNewFAV_button);
         scan_button.setOnClickListener(this);
     }
@@ -112,18 +86,20 @@ public class NewFAVActivity extends Activity implements OnClickListener{
 	        Toast.makeText(this, "Exit cam", Toast.LENGTH_SHORT).show();
 	    } else if(resultCode == RESULT_OK){
 
-	    	//Some camera apps ignore the putExtra uri, and store the pic in a different place
+	    	//Kitkat doesn't work
 	    	if(data != null && data.getData() != null){
 	    		_image_view_uri = data.getData().toString();
 	        	
 				switch(requestCode){
 					case CAMERA_REQUEST:
-						ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,60);
+						ImageUtility.display_photo(this,imageView,data.getData(),60,60);
 						break;
 					case SELECT_PHOTO:
-						ImageUtility.display_photo(this,imageView,Uri.parse(_image_view_uri),60,-1);
+						ImageUtility.display_photo(this,imageView,data.getData(),60,-1);
 						break;
 				}
+	    	}else{
+	    		Toast t = Toast.makeText(this, "Your version is not supported camera", Toast.LENGTH_SHORT);
 	    	}
 		}
 
