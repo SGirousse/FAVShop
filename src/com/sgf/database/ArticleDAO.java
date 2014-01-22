@@ -2,7 +2,6 @@ package com.sgf.database;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -163,7 +162,7 @@ public class ArticleDAO {
 	
 	public int deleteArticleById(long id){
 		Log.w("TRACE_DB", "ArticleDAO *** public int deleteArticleById(long id)");
-		
+
 		return _articles_db.delete(_articles_db_helper.TABLE_CUSTOMER_ARTICLE, _articles_db_helper.COL_ARTICLE_ID +"=?", new String[]{String.valueOf(id)});
 	}
 	

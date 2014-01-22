@@ -3,6 +3,7 @@ package com.sgf.listeners;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -28,8 +29,7 @@ public class DeleteArticleButton implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		_article_dao = new ArticleDAO(_c);
-		_article_dao.open(true);
-		
+		_article_dao.open(true);		
 
 		//delete all the checked elements in database
 		for(int i=0;i<_article_to_delete_list.size();i++){
