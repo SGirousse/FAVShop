@@ -22,55 +22,129 @@
 	        android:layout_height="wrap_content"
 	        android:orientation="horizontal">
 	        
-   	        <TextView
-		        android:id="@+id/textViewShowFavStore"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="Store name"
-	        	android:textColor="#000000"
-	        	android:layout_weight="1" />
+	        <LinearLayout 	         
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_weight="1" >
+	   	        
+	   	        <TextView
+			        android:id="@+id/textViewShowFavStore"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="Boutique:"
+		        	android:textColor="#000000"
+		        	android:paddingRight="5dp" />
+		        	
+		        	<TextView
+			        android:id="@+id/textViewShowFavStoreContent"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="storeName"
+		        	android:textColor="#000000" />
 	        
-	        <TextView
-		        android:id="@+id/textViewShowFavBarcode"
-		        android:layout_width="wrap_content"
+	        </LinearLayout>
+	        
+	        <LinearLayout 	         
+		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:text="Bar code"
-		        android:textStyle="italic"
-	        	android:textColor="#000000"
-	        	android:layout_weight="1" />
+		        android:orientation="horizontal"
+		        android:layout_weight="1" >
+	        
+		        <TextView
+			        android:id="@+id/textViewShowFavBarcode"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="Bar code:"
+		        	android:textColor="#000000"
+		        	android:paddingRight="5dp" />
+		        	
+	        	<TextView
+			        android:id="@+id/textViewShowFavBarcodeContent"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="barCode"
+			        android:textStyle="italic"
+		        	android:textColor="#000000" />
+		        	
+        	 </LinearLayout>
 	        
 	    </LinearLayout>
 
-	<LinearLayout 	         
+		<LinearLayout 	         
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:orientation="horizontal">
 	        
-     	    <TextView
-		        android:id="@+id/textViewShowFavNewPrice"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="New Price"
-	        	android:textColor="#000000"
-	        	android:layout_weight="1" />
+	        <LinearLayout 	         
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_weight="1" >
 	        
-   	        <TextView
-		        android:id="@+id/textViewShowFavOldPrice"
-		        android:layout_width="wrap_content"
+	     	    <TextView
+			        android:id="@+id/textViewShowFavSailPrice"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="Prix soldé:"
+		        	android:textColor="#000000"
+		        	android:paddingRight="5dp" />
+		        	
+		        	<TextView
+			        android:id="@+id/textViewShowFavSailPriceContent"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="sailPrice"
+		        	android:textColor="#000000" />
+		        	
+        	 </LinearLayout>
+	        
+	        <LinearLayout 	         
+		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:text="Old Price"
-	        	android:textColor="#000000"
-	        	android:layout_weight="1" />
-	        	
-        	<TextView
+		        android:orientation="horizontal"
+		        android:layout_weight="1" >
+	        
+	   	        <TextView
+			        android:id="@+id/textViewShowFavInitPrice"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="Prix initial:"
+		        	android:textColor="#000000"
+		        	android:paddingRight="5dp" />
+		        	
+	        	<TextView
+			        android:id="@+id/textViewShowFavInitPriceContent"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="initPrice"
+		        	android:textColor="#000000" />
+		        	
+       		</LinearLayout>    
+	    </LinearLayout>
+	
+        <LinearLayout 	         
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_weight="1" >
+        	
+       		<TextView
 		        android:id="@+id/textViewShowFavPercent"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:text="%"
+		        android:text="Remise de:"
 	        	android:textColor="#000000"
-	        	android:layout_weight="1" />
-	        
-	    </LinearLayout>
+	        	android:paddingRight="5dp" />
+	        	
+        	<TextView
+		        android:id="@+id/textViewShowFavPercentContent"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="%"
+	        	android:textColor="#000000" />
+        	
+       	</LinearLayout>
 	
 	    <ImageView
 	        android:id="@+id/imageViewShowFavPic"
@@ -78,12 +152,28 @@
 	        android:layout_height="wrap_content"
 	        android:src="@android:drawable/ic_menu_camera" />
 	
-	    <TextView
-	        android:id="@+id/textViewShowFavDescription"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Description"
-	        android:textColor="#000000" />
+		<LinearLayout 	         
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical"
+		        android:layout_weight="1" >
+		        
+		    <TextView
+		        android:id="@+id/textViewShowFavDescription"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Description:"
+		        android:textColor="#000000"
+	        	android:paddingRight="5dp" />
+		        
+	        <TextView
+		        android:id="@+id/textViewShowFavDescriptionContent"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="description"
+		        android:textColor="#000000" />
+		        
+	         </LinearLayout>
         
     </LinearLayout>
     

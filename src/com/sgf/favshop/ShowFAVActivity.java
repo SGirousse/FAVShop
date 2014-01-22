@@ -46,10 +46,10 @@ public class ShowFAVActivity extends Activity{
 			TextView tv_title = (TextView) findViewById(R.id.textViewShowFavTitle);
 			tv_title.setText(a.getTitle());
 			
-			TextView tv_store = (TextView) findViewById(R.id.textViewShowFavStore);
+			TextView tv_store = (TextView) findViewById(R.id.textViewShowFavStoreContent);
 			tv_store.setText(a.getStore()+" - ");
 			
-			TextView tv_barcode = (TextView) findViewById(R.id.textViewShowFavBarcode);
+			TextView tv_barcode = (TextView) findViewById(R.id.textViewShowFavBarcodeContent);
 			tv_barcode.setText(a.getBarcode());
 			
 			if(a.getUrl()!=null){
@@ -57,9 +57,17 @@ public class ShowFAVActivity extends Activity{
 				ImageUtility.display_photo(this,iv_pic,Uri.parse(a.getUrl()),500,500);
 			}
 			
-			TextView tv_description = (TextView) findViewById(R.id.textViewShowFavDescription);
+			TextView tv_description = (TextView) findViewById(R.id.textViewShowFavDescriptionContent);
 			tv_description.setText(a.getDescription());
 			
+			TextView tv_initPrice = (TextView) findViewById(R.id.textViewShowFavInitPriceContent);
+			tv_initPrice.setText(String.valueOf(a.getInitprice())+"€");
+			
+			TextView tv_sailPrice = (TextView) findViewById(R.id.textViewShowFavSailPriceContent);
+			tv_sailPrice.setText(String.valueOf(a.getSailprice())+"€");
+			
+			TextView tv_percentPrice = (TextView) findViewById(R.id.textViewShowFavPercentContent);
+			tv_percentPrice.setText(String.valueOf(a.getSailprice()*100/a.getInitprice())+"%");
 		}else{
 			Toast t = Toast.makeText(this, "Erreur lors de la récupération de l'article.", Toast.LENGTH_SHORT);
 			t.show();
