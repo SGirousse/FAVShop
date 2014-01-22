@@ -17,9 +17,9 @@ import android.widget.Toast;
 import com.sgf.libext.ZBarConstants;
 import com.sgf.libext.ZBarScannerActivity;
 import com.sgf.listeners.AddPhotoPressListener;
-import com.sgf.listeners.SearchPhotoPressListener;
 import com.sgf.listeners.ClickImageView;
 import com.sgf.listeners.SaveNewFAVButton;
+import com.sgf.listeners.SearchPhotoPressListener;
 import com.sgf.tool.ImageUtility;
 
 public class NewFAVActivity extends Activity implements OnClickListener{

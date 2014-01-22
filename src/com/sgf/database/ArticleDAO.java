@@ -116,8 +116,6 @@ public class ArticleDAO {
 	    //close the cursor
 	    cursor.close();
 		    
-
-		Log.i("TRACE_TMP", "Liste prete a etre retournee");
 		return a_list;
 	}
 	
@@ -161,6 +159,12 @@ public class ArticleDAO {
 		Log.w("TRACE_DB", "ArticleDAO *** public int deleteAllArticles()");
 		
 		return _articles_db.delete(_articles_db_helper.TABLE_CUSTOMER_ARTICLE, null, null);
+	}
+	
+	public int deleteArticleById(long id){
+		Log.w("TRACE_DB", "ArticleDAO *** public int deleteArticleById(long id)");
+		
+		return _articles_db.delete(_articles_db_helper.TABLE_CUSTOMER_ARTICLE, _articles_db_helper.COL_ARTICLE_ID +"=?", new String[]{String.valueOf(id)});
 	}
 	
 	/**
