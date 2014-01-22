@@ -61,6 +61,7 @@ public final class ImageUtility {
         int orientation;
         float pxWidthHope = convertDpToPixel(dpWidthHope,context);
         float pxHeightHope = convertDpToPixel(dpHeightHope,context);
+        float pxMax;
         
         //Affichage de l'image si possible
 		try {
@@ -75,12 +76,26 @@ public final class ImageUtility {
 				
 				//Test si l'orientation est la meme que lors de la prise de la photo
 				if(orientation != 0){
+					
+					//On pre-reduit l'image avant le changement d'orientation
+					if(pxWidthHope > 0 || pxHeightHope > 0){
+						
+						if(pxWidthHope > pxHeightHope){
+							pxMax = pxWidthHope;
+						}else{
+							pxMax = pxHeightHope;
+						}
+						
+						photo = resizedBitmap(photo,pxMax,pxMax);
+					}
+					
 					//On tourne l'image pour l'affichage
 					photo = rotate(photo,orientation);
 				}
 				
 				//Modification de l'image si necessaire
-				if(pxWidthHope > 0 || pxHeightHope > 0){
+				if((pxWidthHope > 0 || pxHeightHope > 0) &&
+						(pxWidthHope < photo.getWidth() || pxHeightHope < photo.getHeight())){
 					photo = resizedBitmap(photo,pxWidthHope,pxHeightHope);
 				}
 				
