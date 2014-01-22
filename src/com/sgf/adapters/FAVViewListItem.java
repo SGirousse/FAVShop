@@ -29,14 +29,18 @@ public class FAVViewListItem extends ArrayAdapter<Article>{
 	
 	private Context _context;
 	private int _layout_id;
-	private List<Article> _a_list;
+	private List<Article> _a_list;			//article list
+	private List<Long> _a_to_delete_list;	//easier way to manage elements to be destroyed
+	private CheckBox _check_box_clicked;	//to manage a checkbox in inner class
+	private Article _current_article;		//to manage current article in inner class
 	
-	public FAVViewListItem(Context context, int layout_id, List<Article> a_list) {
+	public FAVViewListItem(Context context, int layout_id, List<Article> a_list, List<Long> a_to_delete_list) {
 		super(context, layout_id, a_list);
 		
 		_context=context;
 		_layout_id=layout_id;
 		_a_list=a_list;
+		_a_to_delete_list=a_to_delete_list;
 	}
 	
 	@Override
@@ -52,10 +56,16 @@ public class FAVViewListItem extends ArrayAdapter<Article>{
 		Article a = _a_list.get(position);
 		
 		CheckBox check_box_article = (CheckBox) convertView.findViewById(R.id.checkBoxDelete);
+		_check_box_clicked = check_box_article;	//to be managed in inner class
+		_current_article = a;					//same
 		check_box_article.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//Well... nothing special to do, but it has to be done.
+				if(_check_box_clicked.isChecked()){
+					_a_to_delete_list.add(_current_article.getId());
+				}else{
+					_a_to_delete_list.remove(_current_article.getId());
+				}
 			}
 		});
 

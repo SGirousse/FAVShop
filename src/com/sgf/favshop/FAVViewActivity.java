@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.sgf.adapters.FAVViewListItem;
 import com.sgf.database.ArticleDAO;
+import com.sgf.listeners.DeleteArticleButton;
 import com.sgf.listeners.FAVViewListView;
 import com.sgf.listeners.InfoButtonListener;
 import com.sgf.pojo.Article;
@@ -20,8 +21,10 @@ public class FAVViewActivity extends Activity {
 	private FAVViewListItem _FAVview_listitem;
 	private FAVViewListView _FAVview_listview;
 	private InfoButtonListener _infoButtonListener;
+	private DeleteArticleButton _deleteArticleButton;
 	private ArticleDAO _article_dao;
 	private List<Article> _article_list;
+	private List<Long> _article_to_delete;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +37,14 @@ public class FAVViewActivity extends Activity {
 		_article_list=new ArrayList<Article>();
 		_article_list=_article_dao.getAllArticles();
 		_article_dao.close();
+		
+		_article_to_delete=new ArrayList<Long>();
 				
 		//list view
 		ListView lv_favs = (ListView) findViewById(R.id.listViewFavView);
 		
 		// -- Adapters -- //
-		_FAVview_listitem = new FAVViewListItem(this, R.layout.item_favview, _article_list);
+		_FAVview_listitem = new FAVViewListItem(this, R.layout.item_favview, _article_list, _article_to_delete);
 		lv_favs.setAdapter(_FAVview_listitem);
 		
 		// -- Listeners -- //
@@ -48,7 +53,9 @@ public class FAVViewActivity extends Activity {
 		_infoButtonListener = new InfoButtonListener(this);
 		ImageButton info_imagebutton = (ImageButton) findViewById(R.id.imageButtonInfo);
 		info_imagebutton.setOnClickListener(_infoButtonListener);
-		
+		_deleteArticleButton = new DeleteArticleButton(_article_list, _article_to_delete, this.getBaseContext(),_FAVview_listitem);
+		ImageButton del_imagebutton = (ImageButton) findViewById(R.id.imageButtonDelete);
+		del_imagebutton.setOnClickListener(_deleteArticleButton);
 	}
 	
     @Override
