@@ -1,15 +1,8 @@
 package com.sgf.favshop;
 
-import java.io.File;
-import java.io.IOException;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.text.format.Time;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sgf.libext.ZBarConstants;
@@ -52,6 +46,13 @@ public class NewFAVActivity extends Activity implements OnClickListener{
         buttonAdd.setOnClickListener(new AddPhotoPressListener(this,CAMERA_REQUEST));
         saveNewFAV_button.setOnClickListener(_saveNewFAV_button);
         scan_button.setOnClickListener(this);
+        
+		////////////////////////////////////
+		/// TEST AND DEBUG - TO BE FIXED ///
+        TextView tv = (TextView) findViewById(R.id.textViewNewFavPriceContent);
+        tv.setText((int) (Math.random()*1000));
+		/// TEST AND DEBUG - TO BE FIXED ///		
+		////////////////////////////////////
     }
     
     @Override
