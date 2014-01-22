@@ -5,7 +5,10 @@ import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -44,7 +47,7 @@ public class FAVViewActivity extends Activity {
 		ListView lv_favs = (ListView) findViewById(R.id.listViewFavView);
 		
 		// -- Adapters -- //
-		_FAVview_listitem = new FAVViewListItem(this, R.layout.item_favview, _article_list, _article_to_delete);
+		_FAVview_listitem = new FAVViewListItem(this, R.layout.item_favview, _article_list);
 		lv_favs.setAdapter(_FAVview_listitem);
 		
 		// -- Listeners -- //
@@ -64,4 +67,18 @@ public class FAVViewActivity extends Activity {
         return true;
     }
 
+    public void delChecked(View v){
+		CheckBox cb = (CheckBox) v;
+		
+		//Tagged in adapter
+		long position = Integer.parseInt(cb.getTag().toString());
+
+		if (cb.isChecked()) {
+			_article_to_delete.add(position);
+		} else {
+			_article_to_delete.remove(_article_to_delete.indexOf(position));
+		}
+		
+    }
+    
 }
