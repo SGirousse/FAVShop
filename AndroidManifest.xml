@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.CAMERA"/>
 	<uses-feature android:name="android.hardware.camera" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.READ_INTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -68,10 +67,8 @@
             android:name="com.sgf.libext.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
-
-                <!-- Receives the actual messages. -->
+               <!-- Receives the actual messages. -->
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-
                 <category android:name="com.techlovejump.gcm" />
             </intent-filter>
         </receiver>
@@ -81,11 +78,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <activity
-            android:name="com.sgf.libext.ReceiveActivity"
-            android:label="coucou" >
-        </activity>
         
     </application>
 
